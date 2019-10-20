@@ -13,3 +13,7 @@ A minimal boilerplate repo with Vue based upon the Vue CLI version, but with upd
 
 * `npm run build`: Compiles and minifies for production.
 * `npm run lint`: Lints and fixes files.
+
+## Todo
+
+Remove the use of CLI service and explicitly use Webpack for building.
