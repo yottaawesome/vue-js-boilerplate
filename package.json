@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --hot --port 8080",
+    "start": "webpack serve --hot --port 8080",
     "build-dev": "webpack --mode=development",
     "lint": "eslint ./src"
   },

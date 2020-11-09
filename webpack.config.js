@@ -1,27 +1,27 @@
 // webpack.config.js
-const path = require("path");
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const HTMLWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development',
 
-  entry: "./src/main.js",
+  entry: './src/main.js',
 
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "[hash].[name].js",
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[contenthash].[name].js',
   },
 
   resolve: {
     extensions: [ '.js', '.vue' ]
   },
 
-  devtool: "source-map",
+  devtool: 'source-map',
 
   devServer: {
-    contentBase: "./dist",
+    contentBase: './dist',
     overlay: true,
     historyApiFallback: true
   },
@@ -30,13 +30,13 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        use: [{ loader: 'vue-loader' }]
       },
       // this will apply to both plain `.js` files
       // AND `<script>` blocks in `.vue` files
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        use: [{ loader: 'babel-loader' }],
         exclude: /node_modules/
       },
       // this will apply to both plain `.css` files
@@ -52,9 +52,9 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg)$/,
         use: [
           {
-            loader: "url-loader",
+            loader: 'url-loader',
             options: {
-              fallback: "file-loader"
+              fallback: 'file-loader'
             }
           }
         ]
@@ -66,8 +66,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new VueLoaderPlugin(),
     new HTMLWebpackPlugin({
-      template: path.join(__dirname, "./src/index.html"),
-      chunksSortMode: 'dependency'
+      template: path.join(__dirname, './src/index.html')
     })
   ]
 }
